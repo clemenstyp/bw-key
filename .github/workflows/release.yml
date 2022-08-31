@@ -18,7 +18,7 @@ defaults:
 
 jobs:
   create-release:
-    if: github.repository_owner == 'haipengno1'
+    if: github.repository_owner == 'clemenstyp'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
 
   upload-assets:
     name: ${{ matrix.target }}
-    if: github.repository_owner == 'haipengno1'
+    if: github.repository_owner == 'clemenstyp'
     needs:
       - create-release
     strategy:
@@ -44,6 +44,8 @@ jobs:
         include:
           - target: x86_64-unknown-linux-gnu
           - target: x86_64-apple-darwin
+            os: macos-latest
+          - target: arm_64-apple-darwin
             os: macos-latest
           - target: x86_64-pc-windows-msvc
             os: windows-latest
